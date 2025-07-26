@@ -1,0 +1,219 @@
+/* Removido o @import daqui, foi para o HTML via <link> que é mais performático */
+
+/* MELHORIA: Reset e Box Sizing Universal */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #56535d;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    color: white; /* Definir a cor padrão do texto aqui */
+
+    /* CORREÇÃO: Adicionar um padding no topo para não ficar atrás do header */
+    padding-top: 95px; /* Altura aproximada do seu header */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px; /* Aumentei um pouco o padding lateral */
+    background-color: #232027;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; /* CORREÇÃO: 100% para ocupar toda a largura, não 99% */
+    z-index: 1000;
+    border-bottom: 1px solid #444; /* MELHORIA: Pequeno detalhe visual */
+}
+
+/* NOVO: Estilizando o link do logo e título */
+.logo-titulo {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espaçamento entre logo e texto */
+    text-decoration: none;
+    color: white;
+    font-size: 30px;
+    font-family: 'Bebas Neue', sans-serif; /* Usando a fonte importada */
+}
+
+header .logo-titulo img {
+    height: 55px;
+    width: 55px; /* Deixei quadrado para não distorcer */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex; /* Flexbox também é ótimo para menus */
+}
+
+.nav-links li {
+    padding: 0 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out; /* MELHORIA: Transição suave */
+}
+
+.nav-links li:hover {
+    transform: scale(1.05);
+}
+
+.nav-links a:hover {
+    color: #c4c4c4;
+}
+
+.botao {
+    padding: 10px 25px;
+    background-color: #7b4e9e; /* MELHORIA: Cor com mais destaque */
+    border-radius: 50px;
+    cursor: pointer;  
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    text-align: center;
+   font-size: large;
+}
+
+.botao2 {
+    padding: 10px 25px;
+    background-color: #7b4e9e; /* MELHORIA: Cor com mais destaque */
+    border-radius: 10px;
+    cursor: pointer;  
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    text-align: center;
+}
+
+.botao:hover {
+    transform: scale(1.05);
+    background-color: #9263ba;
+}
+
+/* --- CORREÇÃO PRINCIPAL NO LAYOUT --- */
+.container {
+    width: 100%;
+    max-width: 1200px; /* MELHORIA: Limita a largura em telas muito grandes */
+    margin: 0 auto; /* Centraliza o container */
+    padding: 40px 20px;
+
+    /* CORREÇÃO: Usando Flexbox ao invés de float */
+    display: flex;
+    align-items: center; /* Alinha os itens verticalmente */
+    gap: 20px; /* Espaço entre as colunas */
+}
+
+.esquerda, .direita {
+    width: 50%; /* Cada um ocupa metade do espaço */
+    /* CORREÇÃO: Removidas as propriedades de height e line-height problemáticas */
+}
+
+.esquerda {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espaço entre os parágrafos */
+    text-align: left;
+}
+
+
+.centro{
+    display: flex;
+    
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.centro h1{
+    font-size: 3.5rem; /* Tamanho do título principal */
+    font-family: 'Bebas Neue', sans-serif;
+    text-align: center;
+}
+
+.centro p{
+    font-size: 1.2rem;
+    font-weight: normal;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.centro li{
+    text-align: left;
+    font-weight: 500;
+}
+
+.centro img{
+    max-width: 50px;
+    height: auto;
+}
+
+.esquerda h1 {
+    font-size: 3.5rem; /* Tamanho do título principal */
+    font-family: 'Bebas Neue', sans-serif;
+    line-height: 1.1; /* Ajuste na altura da linha */
+}
+
+.esquerda p {
+    font-size: 1.2rem;
+    font-weight: normal;
+}
+
+.direita {
+    text-align: center; /* Centraliza a imagem dentro da div */
+}
+
+.direita li{
+    list-style-type: none;
+    text-decoration: none;
+    font-weight: 300;
+}
+
+.direita img {
+    max-width: 100%; /* A imagem nunca será maior que seu container */
+    height: auto; /* Mantém a proporção */
+}
+
+
+
+/* --- MEDIA QUERY CORRIGIDA --- */
+@media (max-width: 800px) {
+    /* Deixa o layout em coluna única em telas menores */
+    .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .esquerda, .direita {
+        width: 100%; /* Ocupa a largura total */
+    }
+
+    .esquerda h1 {
+        font-size: 2.5rem;
+    }
+
+    .direita {
+        margin-top: 30px;
+        
+    }
+   
+    /* Oculta a navegação principal e mostra um ícone de menu (não implementado aqui) */
+  
+    
+    .logo-titulo {
+        font-size: 24px;
+    }
+
+    /* CORREÇÃO: Seletor específico para a imagem do logo */
+    header .logo-titulo img {
+        height: 40px;
+        width: 40px;
+    }
+}
